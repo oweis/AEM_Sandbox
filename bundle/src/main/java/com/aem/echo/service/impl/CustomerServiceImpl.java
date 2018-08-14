@@ -119,7 +119,7 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	// Stores customer data in the Adobe CQ JCR
-	public int injestCustData(String firstName, String lastName, String address, String desc) {
+	public int injestCustomerData(String firstName, String lastName, String address, String desc) {
 
 		int num = 0;
 		try {

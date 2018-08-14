@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bnd-LastModified: 1534206388057
+Bnd-LastModified: 1534266896819
 Build-Jdk: 1.8.0_181
 Built-By: Oweis Yahya
 Bundle-Description: Maven Multimodule project for My Project.
@@ -8,25 +8,18 @@ Bundle-Name: My Project Bundle
 Bundle-SymbolicName: com.aem.community.echoproject-bundle
 Bundle-Version: 1.0.0.SNAPSHOT
 Created-By: Apache Maven Bundle Plugin
-Export-Package: com.aem.community;version="1.0.0",com.aem.echo.model;ver
- sion="1.0.0.SNAPSHOT",com.aem.echo.service;version="1.0.0.SNAPSHOT",com
- .sport.restservice.client;uses:="org.apache.http.client,org.apache.http
- .client.methods,org.apache.http.conn,org.apache.http.impl.client,org.ap
- ache.http";version="1.0.0.SNAPSHOT",com.sport.restservice.client.hellos
- ervice;version="1.0.0.SNAPSHOT",com.workflows.steps;uses:="com.adobe.gr
- anite.workflow.exec,com.adobe.granite.workflow.metadata,org.slf4j,com.a
- dobe.granite.workflow";version="1.0.0.SNAPSHOT"
+Export-Package: com.aem.echo.model;version="1.0.0.SNAPSHOT",com.aem.echo
+ .service;version="1.0.0.SNAPSHOT",com.aem.echo.workflows.steps;uses:="c
+ om.adobe.granite.workflow.exec,com.adobe.granite.workflow.metadata,org.
+ slf4j,com.adobe.granite.workflow";version="1.0.0.SNAPSHOT"
 Import-Package: com.adobe.granite.workflow;version="[1.0,2)",com.adobe.g
  ranite.workflow.exec;version="[1.0,2)",com.adobe.granite.workflow.metad
- ata;version="[1.0,2)",com.aem.community;version="[1.0,2)",com.aem.echo.
- model,com.aem.echo.service,javax.jcr;version="[2.0,3)",javax.jcr.query;
- version="[2.0,3)",javax.servlet,javax.xml.parsers,javax.xml.transform,j
- avax.xml.transform.dom,javax.xml.transform.stream,org.apache.http,org.a
- pache.http.client,org.apache.http.client.methods,org.apache.http.conn,o
- rg.apache.http.impl.client,org.apache.jackrabbit.commons;version="[2.4,
- 3)",org.apache.sling.api;version="[2.2,3)",org.apache.sling.api.request
- ;version="[2.2,3)",org.apache.sling.api.resource;version="[2.1,3)",org.
- apache.sling.jcr.api;version="[2.1,3)",org.slf4j;version="[1.5,2)",org.
- w3c.dom
+ ata;version="[1.0,2)",com.aem.echo.model,com.aem.echo.service,javax.jcr
+ ;version="[2.0,3)",javax.jcr.query;version="[2.0,3)",javax.servlet,java
+ x.xml.parsers,javax.xml.transform,javax.xml.transform.dom,javax.xml.tra
+ nsform.stream,org.apache.jackrabbit.commons;version="[2.4,3)",org.apach
+ e.sling.api;version="[2.2,3)",org.apache.sling.api.request;version="[2.
+ 2,3)",org.apache.sling.api.resource;version="[2.1,3)",org.slf4j;version
+ ="[1.5,2)",org.w3c.dom
 Service-Component: OSGI-INF/serviceComponents.xml
 Tool: Bnd-1.50.0
