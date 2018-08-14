@@ -1,4 +1,4 @@
-package com.workflows.steps;
+package com.aem.echo.workflows.steps;
 
 import org.apache.felix.scr.annotations.Component;
 import org.apache.felix.scr.annotations.Service;

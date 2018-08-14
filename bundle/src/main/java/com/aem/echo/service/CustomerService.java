@@ -3,7 +3,7 @@ package com.aem.echo.service;
 public interface CustomerService {
 
 	// Stores customer data in the Adobe CQ JCR
-	public int injestCustData(String firstName, String lastName, String phone, String desc);
+	public int injestCustomerData(String firstName, String lastName, String phone, String desc);
 
 	/*
 	 * Retrieves customer data from the AEM JCR and returns all customer data within
