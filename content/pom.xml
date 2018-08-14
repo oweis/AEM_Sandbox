@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <!-- ====================================================================== -->
+    <!-- P A R E N T P R O J E C T D E S C R I P T I O N -->
+    <!-- ====================================================================== -->
+    <parent>
+        <groupId>com.aem.community</groupId>
+        <artifactId>echoproject</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <!-- ====================================================================== -->
+    <!-- P R O J E C T D E S C R I P T I O N -->
+    <!-- ====================================================================== -->
+
+    <artifactId>echoproject-content</artifactId>
+    <packaging>content-package</packaging>
+    <name>My Project Package</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>echoproject-bundle</artifactId>
+            <version>${project.version}</version>
+        </dependency>        
+        <dependency>
+		    <groupId>org.apache.sling</groupId>
+		    <artifactId>org.apache.sling.jcr.jcr-wrapper</artifactId>
+		    <version>2.0.0</version>
+		    <!-- javax.jcr -->
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.sling</groupId>
+		    <artifactId>org.apache.sling.api</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.day.cq</groupId>
+		    <artifactId>cq-commons</artifactId>
+		        <version>5.8.32</version>
+    			<scope>provided</scope>
+		    <!-- com.day.cq.commons -->
+		</dependency>
+		<dependency>
+		    <groupId>com.day.cq.wcm</groupId>
+		    <artifactId>cq-wcm-commons</artifactId>
+		        <version>5.8.8</version>
+    			<scope>provided</scope>
+		    <!-- com.day.cq.wcm.commons -->
+		</dependency>
+		<dependency>
+		    <groupId>com.day.cq.wcm</groupId>
+		    <artifactId>cq-wcm-api</artifactId>
+   			<version>5.9.4</version>
+    		<scope>provided</scope>
+		    <!-- com.day.cq.wcm.api -->
+		</dependency>
+		<dependency>
+		    <groupId>com.day.commons</groupId>
+		    <artifactId>day-commons-jstl</artifactId>
+		    <version>1.1.4</version>
+    		<scope>provided</scope>
+		    <!-- javax.servlet.jsp.jstl.core -->
+		</dependency>
+		<dependency>
+		    <groupId>com.day.cq.wcm</groupId>
+		    <artifactId>cq-wcm-taglib</artifactId>
+    <version>5.8.2</version>
+    <scope>provided</scope>
+		    <!-- com.day.cq.wcm.tags -->
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.sling</groupId>
+		    <artifactId>org.apache.sling.scripting.jsp.taglib</artifactId>
+		        <version>2.3.0</version>
+    <scope>provided</scope>
+		    
+		    <!-- org.apache.sling.scripting.jsp.taglib -->
+		</dependency>
+		<dependency>
+		    <groupId>com.adobe.granite</groupId>
+		    <artifactId>com.adobe.granite.xssprotection</artifactId>
+		       <version>5.5.26</version>
+    <scope>provided</scope>
+		    <!-- com.adobe.granite.xss -->
+		</dependency>
+		<dependency>
+		    <groupId>com.day.cq.wcm</groupId>
+		    <artifactId>cq-wcm-core</artifactId>
+		        <version>5.7.10</version>
+    <scope>provided</scope>
+		    <!-- com.day.cq.wcm.core.components -->
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		        <version>3.7</version>
+		    <!-- org.apache.commons.lang3 -->
+		</dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-api</artifactId>
+		        <version>1.7.25</version>
+		</dependency>
+    </dependencies>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/content/jcr_root</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/.vlt</exclude>
+                    <exclude>**/.vltignore</exclude>
+                </excludes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <configuration>
+                    <includeEmptyDirs>true</includeEmptyDirs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <group>My Company</group>
+                    <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
+                    <embeddeds>
+                        <embedded>
+                            <groupId>${project.groupId}</groupId>
+                            <artifactId>echoproject-bundle</artifactId>
+                            <target>/apps/myproject/install</target>
+                        </embedded>
+                    </embeddeds>
+                    <targetURL>http://${crx.host}:${crx.port}/crx/packmgr/service.jsp</targetURL>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+      <artifactId>maven-resources-plugin</artifactId>
+      <executions>
+        <execution>
+          <id>copy-resources</id>
+          <phase>generate-sources</phase>
+          <goals>
+            <goal>copy-resources</goal>
+          </goals>
+          <configuration>
+            <outputDirectory>${project.build.directory}/jsps-to-compile</outputDirectory>
+            <resources>
+              <resource>
+                <directory>src/main/content/jcr_root</directory>
+                <excludes>
+                  <exclude>libs/**</exclude>
+                </excludes>
+              </resource>
+            </resources>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+    <plugin>
+      <groupId>org.apache.sling</groupId>
+      <artifactId>maven-jspc-plugin</artifactId>
+      <version>2.0.6</version>
+      <executions>
+        <execution>
+          <id>compile-jsp</id>
+          <goals>
+            <goal>jspc</goal>
+          </goals>
+          <configuration>
+            <jasperClassDebugInfo>false</jasperClassDebugInfo>
+            <sourceDirectory>${project.build.directory}/jsps-to-compile</sourceDirectory>
+            <outputDirectory>${project.build.directory}/ignoredjspc</outputDirectory>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+    <plugin>
+      <artifactId>maven-clean-plugin</artifactId>
+      <executions>
+        <execution>
+          <id>remove-compiled-jsps</id>
+          <goals>
+            <goal>clean</goal>
+          </goals>
+          <phase>process-classes</phase>
+          <configuration>
+            <excludeDefaultDirectories>true</excludeDefaultDirectories>
+            <filesets>
+              <fileset>
+                <directory>${project.build.directory}/jsps-to-compile</directory>
+                <directory>${project.build.directory}/ignoredjspc</directory>
+              </fileset>
+            </filesets>
+          </configuration>
+        </execution>
+      </executions>
+    </plugin>
+        </plugins>
+    </build>
+    <profiles>
+        <profile>
+            <id>autoInstallPackage</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.day.jcr.vault</groupId>
+                        <artifactId>content-package-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>install-content-package</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>install</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>autoInstallPackagePublish</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>com.day.jcr.vault</groupId>
+                        <artifactId>content-package-maven-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>install-content-package-publish</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>install</goal>
+                                </goals>
+                                <configuration>
+                                    <targetURL>http://${publish.crx.host}:${publish.crx.port}/crx/packmgr/service.jsp</targetURL>
+                                    <username>${publish.crx.username}</username>
+                                    <password>${publish.crx.password}</password>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

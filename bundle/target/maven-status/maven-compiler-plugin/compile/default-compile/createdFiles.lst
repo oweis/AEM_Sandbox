@@ -1,0 +1,12 @@
+com\aem\echo\service\impl\CustomerServiceImpl.class
+com\aem\community\impl\HelloServiceImpl.class
+com\aem\community\package-info.class
+com\sport\restservice\client\helloservice\HelloService.class
+com\aem\community\HelloService.class
+com\aem\echo\service\CustomerService.class
+com\aem\community\impl\filters\LoggingFilter.class
+com\sport\restservice\client\Distance.class
+com\sport\restservice\client\helloservice\HelloServiceImpl.class
+com\sport\restservice\client\DistanceImpl.class
+com\aem\echo\model\Customer.class
+com\workflows\steps\CustomStep.class
