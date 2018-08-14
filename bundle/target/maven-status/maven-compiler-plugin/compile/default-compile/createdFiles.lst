@@ -1,6 +1,0 @@
-com\aem\echo\service\CustomerService.class
-com\aem\echo\workflows\steps\LoggerProcess.class
-com\aem\community\impl\filters\LoggingFilter.class
-com\aem\echo\service\impl\CustomerServiceImpl.class
-com\aem\echo\model\Customer.class
-com\aem\echo\workflows\steps\CustomStep.class
