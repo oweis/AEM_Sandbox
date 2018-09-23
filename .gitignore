@@ -1,4 +1,22 @@
+# Eclipse
+.classpath
+.project
+.settings/
 
-bundle/target/
+# Intellij
+.idea/
+*.iml
+*.iws
 
-content/target/
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Brackets
+# echoproject-content/.brackets.json
+
+# GIT Stats
+git_stats
